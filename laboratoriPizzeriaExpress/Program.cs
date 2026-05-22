@@ -9,7 +9,7 @@
 using System;
 using System.Windows.Forms;
 
-namespace laboratoriPizzeriaExpress
+namespace laboratorioPizzeriaExpress
 {
 	/// <summary>
 	/// Class with program entry point.
