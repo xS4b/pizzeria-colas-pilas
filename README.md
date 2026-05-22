@@ -57,9 +57,22 @@ Trabajas en el sistema de una pizzería universitaria:
 
 ## ❓ Preguntas de Comprensión (Obligatorias en el PR)
 1. ¿Por qué un sistema de delivery usa `Queue` para los pedidos pero `Stack` para la bitácora? ¿Qué problema surgiría si invertimos las estructuras?
+
+El procesamiento de pedidos sigue una estructura Queue (FIFO) para garantizar la justicia en la atención, entregando la comida en el estricto orden de llegada de los clientes. Por el contrario, un registro de actividad o bitácora se gestiona como Stack (LIFO) porque el interés técnico está en auditar el incidente más reciente, el cual se posiciona arriba de todo para un acceso inmediato.
+   
 2. ¿Por qué es obligatorio verificar `Count == 0` antes de `Dequeue()` o `Pop()`? ¿Qué ocurre en ejecución si se omite?
+
+Esta validación es el escudo de seguridad que impide realizar operaciones de extracción en estructuras vacías. Omitir este chequeo provoca un error de desbordamiento o ejecución inválida (InvalidOperationException) que interrumpe el flujo del sistema de golpe, provocando el colapso y cierre de la aplicación.
+ 
 3. En el método `Deshacer`, ¿por qué es necesario analizar el texto con `.StartsWith()` antes de revertir? ¿Qué error lógico evitaría esto?
+
+La función de este método es inspeccionar el inicio de la cadena de texto almacenada para identificar la naturaleza de la acción previa. Gracias a esto, el sistema no actúa a ciegas y puede ejecutar con precisión la lógica de reversión adecuada, transformando una inserción en una baja, o viceversa.
+
 4. ¿Qué ventaja tiene entregar mediante Fork + Pull Request en lugar de un archivo comprimido? ¿Cómo facilita la la retroalimentación?
+
+La metodología de Fork y Pull Request optimiza la entrega de tareas al filtrar automáticamente carpetas temporales de compilación (bin/obj) que ensucian los archivos .zip. Esta dinámica agiliza la corrección en la nube mediante anotaciones directas del docente y permite aplicar parches en el mismo historial mediante un simple push, sin duplicar entregas.
+
+
 
 ## ✅ Checklist de Entrega
 - [ ] Código compila en SharpDevelop sin warnings críticos
